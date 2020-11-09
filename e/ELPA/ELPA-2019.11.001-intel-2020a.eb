@@ -1,0 +1,31 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/easybuilders/easybuild
+#
+# Authors::   Inge Gutheil <i.gutheil@fz-juelich.de>, Alan O'Cais <a.ocais@fz-juelich.de>
+# License::   MIT/GPL
+#
+##
+
+name = 'ELPA'
+version = '2019.11.001'
+
+homepage = 'https://elpa.rzg.mpg.de'
+description = """Eigenvalue SoLvers for Petaflop-Applications ."""
+
+toolchain = {'name': 'intel', 'version': '2020a'}
+toolchainopts = {'openmp': True, 'usempi': True}
+
+source_urls = ['https://elpa.mpcdf.mpg.de/html/Releases/%(version)s/']
+sources = [SOURCELOWER_TAR_GZ]
+checksums = ['1cb88ad46546c5423ad0e1313b0c144ec733d68ae9a4467953b3166076a30252']
+
+builddependencies = [
+    ('Autotools', '20180311'),
+    ('Python', '2.7.18'),
+]
+
+preconfigopts = 'autoreconf && '
+
+parallel = 1
+
+moduleclass = 'math'
